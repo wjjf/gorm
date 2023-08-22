@@ -272,7 +272,7 @@ func (m Migrator) CreateTable(values ...interface{}) error {
 
 			createTableSQL = strings.TrimSuffix(createTableSQL, ",")
 
-			createTableSQL += ")"
+			createTableSQL += ") DISTRIBUTE BY REPLICATION"
 
 			if tableOption, ok := m.DB.Get("gorm:table_options"); ok {
 				createTableSQL += fmt.Sprint(tableOption)
